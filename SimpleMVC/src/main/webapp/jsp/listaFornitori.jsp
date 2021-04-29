@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" import="it.epicode.simpleMVC.controller.Controller"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Lista Fornitori</title>
+</head>
+<body>
+
+	<c:forEach var="fornitore" items="${ Controller.CHIAVE_LISTA_FORNITORI }" >
+		${fornitore.codiceFornitore } ${fornitore.nome } <br>
+	
+	</c:forEach>
+
+
+</body>
+</html>
