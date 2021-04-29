@@ -30,7 +30,13 @@ public class Controller extends HttpServlet {
 	public static final String CHIAVE_RICERCA_FORNITORE_DESTINATION = "jsp/ricercaFornitore.jsp";
 	public static final String PAGINA_DI_ERRORE_DESTINATION = "jsp/paginaDiErrore.jsp";
 
-
+	static {
+		try {
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e) {
+				throw new RuntimeException(e);
+		}
+	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -39,19 +45,19 @@ public class Controller extends HttpServlet {
 		String action = path.substring(pos+1, path.length()-3);
 		try{
 			switch (action) {
-			case "listaFornitori": listaFornitori(request, response);
-			break;
-			case "aggiungiFornitore": aggiungiFornitori(request, response);
-			break;
-			case "ricercaFornitorePerCodice": ricercaFornitorePerCodice(request, response);
-			default: mostraPaginaDiErrore(request, response);
+				case "listaFornitori": listaFornitori(request, response);
+				break;
+				case "aggiungiFornitore": aggiungiFornitori(request, response);
+				break;
+				case "ricercaFornitorePerCodice": ricercaFornitorePerCodice(request, response);
+				break;
+				default: mostraPaginaDiErrore(request, response);
 		
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 			mostraPaginaDiErrore(request, response);
 		}
-		
 	}
 	
 	private void listaFornitori(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{

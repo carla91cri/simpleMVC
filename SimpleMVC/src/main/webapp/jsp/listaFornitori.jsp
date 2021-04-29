@@ -9,8 +9,8 @@
 </head>
 <body>
 
-	<c:forEach var="fornitore" items="${ Controller.CHIAVE_LISTA_FORNITORI }" >
-		${fornitore.codiceFornitore } ${fornitore.nome } <br>
+	<c:forEach var="fornitore" items="${CHIAVE_LISTA_FORNITORI}" >
+		${fornitore.codiceFornitore}   ${fornitore.nome} <br>
 	
 	</c:forEach>
 
